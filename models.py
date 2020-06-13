@@ -1,4 +1,4 @@
-import datetime, re 
+import datetime, re
 #re module for string manipulation (Regex stuff:)
 from app import db 
 
@@ -16,15 +16,16 @@ class Entry(db.Model):
 	created_timestamp = db.Column(db.DateTime, default=datetime.datetime.now)
 	modified_timestamp = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
-	
+
 	def __init__(self, *args, **kwargs):
-		super(Entry, self).__init__(*args, **kwargs) #calling a parent constructor??
+		super(Entry, self).__init__(*args, **kwargs) #Trying to call a parent constructor
 		self.generate_slug()
 
-		def generate_slug(self):
-			self.slug=''
-			if self.title:
-				self.slug = slugify(self.title)
+	def generate_slug(self):
+		self.slug=''
+		if self.title:
+			self.slug = slugify(self.title)
 
-		def __repr__(self):
-			return '<Entry: %s' %self.title		
+	
+	def __repr__(self):
+		return '<Entry: %s' %self.title
